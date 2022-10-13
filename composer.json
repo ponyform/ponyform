@@ -1,0 +1,22 @@
+{
+  "name": "ponyform/ponyform",
+  "description": "Self-hostable survey web application with focus on data privacy.",
+  "type": "project",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Andreas Mischke",
+      "email": "andreas@mischke.me"
+    }
+  ],
+  "require": {
+    "hidehalo/nanoid-php": "^1.1",
+    "slim/slim": "^4.10",
+    "slim/psr7": "^1.5"
+  },
+  "autoload": {
+    "psr-4": {
+      "PonyForm\\": "app/"
+    }
+  }
+}
