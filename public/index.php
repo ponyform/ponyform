@@ -1,19 +1,39 @@
 <?php
 
-use PonyForm\Config\Config;
-use PonyForm\Controller\HomepageController;
+use Dotenv\Dotenv;
+use PonyForm\Core\PonyForm;
+use PonyForm\SelectionFieldPlugin\SelectionFieldPlugin;
+use PonyForm\SlimHttpAdapter\SlimHttpAdapter;
+use PonyForm\SqliteStorePlugin\SqliteStorePlugin;
+use PonyForm\TextFieldPlugin\TextFieldPlugin;
+use PonyForm\Website\Http\SlimHttpAdapter as WebsiteSlimHttpAdapter;
 use Slim\Factory\AppFactory;
 
 $BASEDIR = dirname(__DIR__);
 
 require_once $BASEDIR . '/vendor/autoload.php';
 
-$cfg = new Config($BASEDIR);
+$dotenv = Dotenv::createImmutable($BASEDIR);
+$dotenv->safeLoad();
+$DEBUG = !empty($_ENV['DEBUG']);
+
+$ponyForm = new PonyForm(
+    baseDir: $BASEDIR,
+    storePlugin: new SqliteStorePlugin($BASEDIR . '/database/db.sqlite3'),
+    options: [
+        "debug" => $DEBUG,
+        "pathname" => '/f',
+    ],
+);
+$ponyForm->registerPlugin(new TextFieldPlugin());
+$ponyForm->registerPlugin(new SelectionFieldPlugin());
+
 $app = AppFactory::create();
 
 $app->addRoutingMiddleware();
-$errorMiddleware = $app->addErrorMiddleware($cfg->DEBUG, true, true);
+$errorMiddleware = $app->addErrorMiddleware($DEBUG, true, true);
 
-$app->get('/', new HomepageController());
+(new SlimHttpAdapter($ponyForm))->register($app);
+(new WebsiteSlimHttpAdapter())->register($app);
 
 $app->run();

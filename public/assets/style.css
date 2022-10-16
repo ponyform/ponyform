@@ -1,0 +1,196 @@
+:root {
+  --theme-base-hue: 190;
+  --color-text: hsl(0, 0%, 0%);
+  --color-text-80: hsl(0, 0%, 20%);
+  --color-text-60: hsl(0, 0%, 40%);
+  --color-text-40: hsl(0, 0%, 60%);
+  --color-primary: hsl(var(--theme-base-hue), 100%, 30%);
+  --color-primary-contrast: #ffffff;
+  --color-input-border: hsl(var(--theme-base-hue), 40%, 30%);
+  --color-light-background: hsl(var(--theme-base-hue), 100%, 97%);
+  --theme-error-hue: 0;
+  --color-error: hsl(var(--theme-error-hue), 100%, 35%);
+  --color-error-light-background: hsl(var(--theme-error-hue), 100%, 95%);
+  --color-error-contrast: #ffffff;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+a {
+  color: var(--color-primary);
+}
+
+/* Centered layout containers */
+.survey__title,
+.survey__description,
+.survey__submit-wrapper,
+.survey__beta-info,
+.survey-thankyou__wrapper,
+.survey-field__wrapper,
+.survey-footer {
+  display: block;
+  padding-inline: 1rem;
+  max-width: 40rem;
+  margin-block: 1rem;
+  margin-inline: auto;
+}
+
+.survey__title {
+  font-weight: 300;
+  letter-spacing: 1px;
+}
+
+.survey__error-message {
+  display: none;
+  background-color: var(--color-error);
+  color: var(--color-error-contrast);
+  padding: 0.25rem;
+  margin-block: 0.5rem;
+  text-align: center;
+}
+.survey__error-message--active {
+  display: block;
+}
+
+.survey__submit-wrapper {
+  display: flex;
+  justify-content: flex-end;
+}
+.button {
+  box-sizing: border-box;
+  border-radius: 0;
+  min-width: 10rem;
+  border: 1px solid currentColor;
+  background-color: transparent;
+  font-size: 1rem;
+  padding: 0.5rem;
+}
+.button--primary {
+  background-color: var(--color-primary);
+  color: var(--color-primary-contrast);
+}
+@keyframes squeeze {
+  from {
+    transform: scale(0.75);
+  }
+  to {
+    transform: scale(1.25);
+  }
+}
+.button__loading-animation {
+  display: none;
+  box-sizing: border-box;
+  justify-content: center;
+  align-items: center;
+  height: 1.125rem;
+}
+.button__loading-animation div {
+  margin-inline: 0.25rem;
+  width: 0.5rem;
+  height: 0.5rem;
+  background-color: white;
+  border-radius: 50%;
+  animation: squeeze 600ms ease-in-out infinite alternate;
+}
+.button__loading-animation div:first-child {
+  animation-delay: -200ms;
+}
+.button__loading-animation div:last-child {
+  animation-delay: 200ms;
+}
+.button--loading .button__label {
+  display: none;
+}
+.button--loading .button__loading-animation {
+  display: flex;
+}
+
+.survey__beta-info {
+  background-color: hsl(0, 0%, 90%);
+  margin-block-start: 5rem;
+  padding-block: 1rem;
+  font-size: 0.75rem;
+}
+
+.survey-field__wrapper {
+  background-color: var(--color-light-background);
+  padding-block: 1rem;
+}
+.survey-field__wrapper--error {
+  background-color: var(--color-error-light-background);
+}
+.survey-field__label {
+  display: inline-block;
+  font-size: 1rem;
+  font-weight: bold;
+  line-height: 1.5rem;
+  padding-block-end: 0.5rem;
+}
+.survey-field__label--error {
+  color: var(--color-error);
+}
+.survey-field__optional {
+  color: var(--color-text-60);
+  text-transform: uppercase;
+  font-size: 0.75rem;
+}
+.survey-field__optional::before {
+  content: " ";
+}
+
+.survey-thankyou__wrapper {
+  background-color: var(--color-light-background);
+  padding-block: 1rem;
+}
+
+.survey-thankyou__heading {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: normal;
+}
+.survey-thankyou__info {
+  text-align: center;
+}
+
+.manage-result-summary__table {
+  border-collapse: collapse;
+}
+.manage-result-summary__table-header-cell,
+.manage-result-summary__table-body-cell {
+  text-align: left;
+  padding: 0.5rem;
+  border: 1px solid black;
+  max-width: 20rem;
+}
+
+.datenschutz,
+.impressum {
+  max-width: 40rem;
+  margin: 1rem auto;
+}
+.datenschutz p,
+.impressum p {
+  line-height: 140%;
+}
+.datenschutz__widerrufsrecht {
+  background: aliceblue;
+  margin-inline: -1rem;
+  padding: 1rem;
+}
+
+.survey-footer {
+  display: flex;
+  justify-content: center;
+  font-size: 0.75rem;
+  padding-block: 1rem;
+}
+.survey-footer__separator {
+  display: inline-block;
+  margin-inline: 0.5rem;
+}

@@ -11,13 +11,15 @@
   ],
   "require": {
     "hidehalo/nanoid-php": "^1.1",
-    "slim/slim": "^4.10",
+    "respect/validation": "^2.2",
     "slim/psr7": "^1.5",
+    "slim/slim": "^4.10",
+    "twig/twig": "^3.4",
     "vlucas/phpdotenv": "^5.4"
   },
   "autoload": {
     "psr-4": {
-      "PonyForm\\": "app/"
+      "PonyForm\\": "packages/"
     }
   }
 }

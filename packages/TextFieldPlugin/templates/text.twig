@@ -1,0 +1,5 @@
+{% if question.extra.multiline %}
+    <textarea {{ inputAttributes|raw }} class="ponyform__textfieldplugin__textarea" rows="5">longer</textarea>
+{% else %}
+    <input {{ inputAttributes|raw }} type="text" class="ponyform__textfieldplugin__input" value="shorty" />
+{% endif %}

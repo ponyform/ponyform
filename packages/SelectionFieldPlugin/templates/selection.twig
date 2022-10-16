@@ -1,0 +1,36 @@
+{% if question.extra.multiple %}
+    {% if question.extra.dropdown %}
+        <select {{ inputAttributes|raw }} name="{{ question.id }}" class="ponyform__selectionfieldplugin__select">
+            <option selected {% if question.required %}disabled{% endif %} value="">
+                Keine Auswahl
+            </option>
+            {% for option in question.extra.options %}
+                <option value="{{ option.id }}">
+                    {{ option.text }}
+                </option>
+            {% endfor %}
+        </select>
+    {% else %}
+        <ul {{ inputAttributes|raw }} class="ponyform__selectionfieldplugin__list">
+            {% for option in question.extra.options %}
+                <li>
+                    <label class="ponyform__selectionfieldplugin__label">
+                        <input type="checkbox" name="{{ question.id }}[]" value="{{ option.id }}" class="ponyform__selectionfieldplugin__input" />
+                        {{ option.text }}
+                    </label>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% else %}
+    <ul {{ inputAttributes|raw }} class="ponyform__selectionfieldplugin__list">
+        {% for option in question.extra.options %}
+            <li>
+                <label class="ponyform__selectionfieldplugin__label">
+                    <input type="radio" name="{{ question.id }}" value="{{ option.id }}" class="ponyform__selectionfieldplugin__input" />
+                    {{ option.text }}
+                </label>
+            </li>
+            {% endfor %}
+    </ul>
+{% endif %}
