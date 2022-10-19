@@ -1,0 +1,20 @@
+{
+    "name": "ponyform/ponyform",
+    "description": "Self-hostable survey web application with focus on data privacy.",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Andreas Mischke",
+            "email": "andreas@ponyform.de"
+        }
+    ],
+    "require": {
+        "ponyform/core": "dev-main",
+        "ponyform/selection-question-plugin": "dev-main",
+        "ponyform/text-question-plugin": "dev-main",
+        "ponyform/slim-http-adapter": "dev-main",
+        "slim/slim": "^4.10",
+        "ponyform/sqlite-store-plugin": "dev-main",
+        "ponyform/plugin-contract": "dev-main"
+    }
+}
